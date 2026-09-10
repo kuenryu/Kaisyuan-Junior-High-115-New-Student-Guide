@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>凱旋國中 115學年度數位學生手冊</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --border-color: #dee2e6;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0; font-size: 1.8rem; }
+        
+        /* 導覽列設計 */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
+        }
+        .nav-tabs button {
+            background: none;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #555;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .nav-tabs button:hover { color: var(--primary-color); }
+        .nav-tabs button.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        /* 內容區塊 */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            min-height: 500px;
+        }
+        .tab-content { display: none; }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+
+        /* 作息表表格設計 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+        }
+        th {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        .highlight-row {
+            background-color: #fff3cd !important;
+            font-weight: bold;
+            border-left: 5px solid var(--accent-color);
+        }
+        tr:nth-child(even) { background-color: #fdfdfd; }
+        .note-box {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .nav-tabs button { padding: 10px 15px; font-size: 1rem; flex: 1 1 50%; }
+            th, td { padding: 8px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>凱旋國中數位學生手冊</h1>
+    <p>115 學年度</p>
+</header>
+
+<div class="nav-tabs">
+    <button class="tab-link active" onclick="openTab('schedule')">生活作息表</button>
+    <button class="tab-link" onclick="openTab('safety')">校園安全</button>
+    <button class="tab-link" onclick="openTab('leave')">請假規範</button>
+</div>
+
+<div class="container">
+    <!-- 作息表區塊 -->
+    <div id="schedule" class="tab-content active">
+        <h2 style="color: #0056b3;">凱旋國中115學年度新修訂生活作息表</h2>
+        <p>系統將會根據現在時間，自動標示目前的節次。</p>
+        <div style="overflow-x:auto;">
+            <table id="scheduleTable">
+                <thead>
+                    <tr>
+                        <th>節次</th>
+                        <th>時間</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-start="07:10" data-end="07:30"><td></td><td>07:10~07:30</td><td colspan="5">上學時間</td></tr>
+                    <tr data-start="07:30" data-end="07:55"><td>晨間閱讀</td><td>07:30~07:55</td><td colspan="5">晨間閱讀</td></tr>
+                    <tr data-start="07:55" data-end="08:00"><td>晨讀分享</td><td>07:55~08:00</td><td colspan="5">晨讀分享</td></tr>
+                    <tr data-start="08:00" data-end="08:10"><td>早自習</td><td>08:00~08:10</td><td colspan="2">室內廣播</td><td>朝會</td><td colspan="2">室內廣播</td></tr>
+                    <tr data-start="08:10" data-end="08:20"><td></td><td>08:10~08:20</td><td colspan="5">課間休息</td></tr>
+                    <tr data-start="08:20" data-end="09:05"><td>第一節</td><td>08:20~09:05</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr data-start="09:05" data-end="09:15"><td></td><td>09:05~09:15</td><td colspan="5">課間休息</td></tr>
+                    <tr data-start="09:15" data-end="10:00"><td>第二節</td><td>09:15~10:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr data-start="10:00" data-end="10:15"><td></td><td>10:00~10:15</td><td colspan="5">課間活動(推展健康體適能活動)</td></tr>
+                    <tr data-start="10:15" data-end="11:00"><td>第三節</td><td>10:15~11:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr data-start="11:00" data-end="11:10"><td></td><td>11:00~11:10</td><td colspan="5">課間休息</td></tr>
+                    <tr data-start="11:10" data-end="11:55"><td>第四節</td><td>11:10~11:55</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr data-start="11:55" data-end="12:35"><td></td><td>11:55~12:35</td><td colspan="5">午餐時間(推展潔牙運動) 暨午間打掃</td></tr>
+                    <tr data-start="12:35" data-end="13:10"><td></td><td>12:35~13:10</td><td colspan="5">午休</td></tr>
+                    <tr data-start="13:10" data-end="13:20"><td></td><td>13:10~13:20</td><td colspan="5">課間休息</td></tr>
+                    <tr data-start="13:20" data-end="14:05"><td>第五節</td><td>13:20~14:05</td><td></td><td></td><td>社團活動</td><td></td><td></td></tr>
+                    <tr data-start="14:05" data-end="14:15"><td></td><td>14:05~14:15</td><td colspan="5">課間休息</td></tr>
+                    <tr data-start="14:15" data-end="15:00"><td>第六節</td><td>14:15~15:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr data-start="15:00" data-end="15:15"><td></td><td>15:00~15:15</td><td colspan="5">課間活動(推展健康體適能活動)</td></tr>
+                    <tr data-start="15:15" data-end="16:00"><td>第七節</td><td>15:15~16:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr data-start="16:00" data-end="23:59"><td>放學</td><td>16:00~</td><td colspan="5">放學</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="note-box">
+            <strong>📌 注意事項：</strong>
+            <ul style="margin: 5px 0 0 0; padding-left: 20px;">
+                <li>學校校園為開放校園，請家長及同學配合，於上午 7:10 後進入校園，以維安全。</li>
+                <li>每週三 7:45 召開朝會 (遇重大考試當天或前一天，朝會暫停乙次)。</li>
+                <li>課間活動時間推展健康體適能活動。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 校園安全區塊 -->
+    <div id="safety" class="tab-content">
+        <h2 style="color: #0056b3;">校園安全與防護</h2>
+        <p>此區塊可嵌入反霸凌通報流程、緊急聯絡專線，或圖形化的防震疏散路線圖。</p>
+        <ul>
+            <li><strong>校安專線：</strong> (03) 925-5600 轉 301 (生教組)</li>
+            <li><strong>安心專線：</strong> 1925</li>
+            <li><strong>反霸凌信箱：</strong> (可在此處置入線上通報表單連結)</li>
+        </ul>
+    </div>
+
+    <!-- 請假規範區塊 -->
+    <div id="leave" class="tab-content">
+        <h2 style="color: #0056b3;">學生請假規範與流程</h2>
+        <p>此區塊可整合請假規則與線上表單下載。</p>
+        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px;">
+            <h3>📝 請假三步驟</h3>
+            <ol>
+                <li>事前由家長致電導師或於聯絡簿註明。</li>
+                <li>返校五日內持證明文件填寫「請假單」。</li>
+                <li>完成導師與生教組核章手續。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 頁籤切換功能
+    function openTab(tabName) {
+        var i;
+        var x = document.getElementsByClassName("tab-content");
+        var btns = document.getElementsByClassName("tab-link");
+        
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+            x[i].classList.remove("active");
+            btns[i].classList.remove("active");
+        }
+        
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        event.currentTarget.classList.add("active");
+    }
+
+    // 自動標示當前節次功能
+    function highlightCurrentPeriod() {
+        const now = new Date();
+        const currentHours = now.getHours().toString().padStart(2, '0');
+        const currentMinutes = now.getMinutes().toString().padStart(2, '0');
+        const currentTime = currentHours + ":" + currentMinutes;
+
+        const rows = document.querySelectorAll("#scheduleTable tbody tr");
+        
+        rows.forEach(row => {
+            row.classList.remove('highlight-row'); // 清除先前的標示
+            const startTime = row.getAttribute('data-start');
+            const endTime = row.getAttribute('data-end');
+            
+            if (startTime && endTime) {
+                if (currentTime >= startTime && currentTime < endTime) {
+                    row.classList.add('highlight-row');
+                }
+            }
+        });
+    }
+
+    // 網頁載入時執行一次，並設定每分鐘更新檢查
+    highlightCurrentPeriod();
+    setInterval(highlightCurrentPeriod, 60000);
+
+</script>
+</body>
+</html>
